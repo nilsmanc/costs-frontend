@@ -28,3 +28,8 @@ export interface ICreateCost {
   cost: ICost
   token: string
 }
+
+export interface IGetCosts {
+  url: string
+  token: string
+}
