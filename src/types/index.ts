@@ -22,3 +22,9 @@ export interface ICost {
   date: Date | string
   _id?: number | string
 }
+
+export interface ICreateCost {
+  url: string
+  cost: ICost
+  token: string
+}
