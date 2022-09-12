@@ -35,10 +35,15 @@ export interface IRefreshToken extends IBaseEffectArgs {
   username: string
 }
 
+export interface IDeleteCost extends IBaseEffectArgs {
+  id: string | number
+}
+
 export interface IHandleAxiosErrorPayload {
   type: string
   createCost?: Partial<ICreateCost>
   getCosts?: Partial<IBaseEffectArgs>
+  deleteCost?: Partial<IDeleteCost>
 }
 
 export interface ICostsItemProps {
