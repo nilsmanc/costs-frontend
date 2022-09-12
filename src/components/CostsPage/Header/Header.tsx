@@ -7,7 +7,7 @@ import { Spinner } from '../../Spinner/Spinner'
 import './styles.css'
 import { validationInputs } from '../../../utils/validation'
 import { getAuthDataFromLS, handleAlertMessage } from '../../../utils/auth'
-import { createCostFX } from '../../../api/costsClient'
+import { createCostFx } from '../../../api/costsClient'
 
 export const Header = ({ costs }: ICostsHeaderProps) => {
   const [spinner, setSpinner] = useState(false)
@@ -35,7 +35,7 @@ export const Header = ({ costs }: ICostsHeaderProps) => {
 
     const authData = getAuthDataFromLS()
 
-    const cost = await createCostFX({
+    const cost = await createCostFx({
       url: '/cost',
       cost: {
         text: textInputValue,
@@ -44,10 +44,12 @@ export const Header = ({ costs }: ICostsHeaderProps) => {
       },
       token: authData.access_token,
     })
+
     if (!cost) {
       setSpinner(false)
       return
     }
+
     setSpinner(false)
     createCost(cost)
     handleAlertMessage({ alertText: 'Успешно создано', alertStatus: 'success' })

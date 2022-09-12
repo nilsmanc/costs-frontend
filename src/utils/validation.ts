@@ -18,7 +18,7 @@ export const validationInputs = (
         : input.classList.add('border-danger'),
     )
 
-  if (textInputValue || !priceInputValue || !dateInputValue) {
+  if (!textInputValue || !priceInputValue || !dateInputValue) {
     handleAlertMessage({ alertText: 'Заполните все поля', alertStatus: 'warning' })
     addDangerBorderByCondition()
     return false
@@ -36,5 +36,6 @@ export const validationInputs = (
   dateInput.current.value = ''
 
   inputs.forEach((input) => input.classList.remove('border-danger'))
+
   return true
 }

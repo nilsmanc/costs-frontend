@@ -1,10 +1,10 @@
 import { handleAxiosError } from './../utils/errors'
 import { createEffect } from 'effector'
-import { IBaseEffectArgs, ICreateCost, IDeleteCost, IRefreshToken } from '../types'
+import { IBaseEffectArgs, ICreateCost, IDeleteCost, IRefreshToken, IUpdateCost } from '../types'
 import { removeUser } from '../utils/auth'
 import api from './axiosClient'
 
-export const createCostFX = createEffect(async ({ url, cost, token }: ICreateCost) => {
+export const createCostFx = createEffect(async ({ url, cost, token }: ICreateCost) => {
   try {
     const { data } = await api.post(
       url,
@@ -18,7 +18,21 @@ export const createCostFX = createEffect(async ({ url, cost, token }: ICreateCos
   }
 })
 
-export const getCostsFX = createEffect(async ({ url, token }: IBaseEffectArgs) => {
+export const updateCostFx = createEffect(async ({ url, cost, token, id }: IUpdateCost) => {
+  try {
+    const { data } = await api.patch(
+      `${url}/${id}`,
+      { ...cost },
+      //prettier-ignore
+      { headers: { 'Authorization': `Bearer ${token}` } },
+    )
+    return data
+  } catch (error) {
+    handleAxiosError(error, { type: 'update', updateCost: { cost, id } })
+  }
+})
+
+export const getCostsFx = createEffect(async ({ url, token }: IBaseEffectArgs) => {
   try {
     //prettier-ignore
     const { data } = await api.get(url, { headers: { 'Authorization': `Bearer ${token}` } })
@@ -28,7 +42,7 @@ export const getCostsFX = createEffect(async ({ url, token }: IBaseEffectArgs) =
   }
 })
 
-export const deleteCostFX = createEffect(async ({ url, token, id }: IDeleteCost) => {
+export const deleteCostFx = createEffect(async ({ url, token, id }: IDeleteCost) => {
   try {
     //prettier-ignore
     await api.delete(`${url}/${id}`, { headers: { 'Authorization': `Bearer ${token}` } })

@@ -13,6 +13,7 @@ export const removeUser = () => {
 export const getAuthDataFromLS = () => {
   try {
     const lsData = JSON.parse(localStorage.getItem('auth') as string)
+
     if (!lsData) {
       removeUser()
       return

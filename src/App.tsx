@@ -32,7 +32,7 @@ function App() {
         <Routes>
           <Route
             path='/'
-            element={isLoggedIn ? <Navigate to='/costs' /> : <AuthPage type='login' />}
+            element={isLoggedIn ? <Navigate to='/costs' /> : <Navigate to='login' />}
           />
           <Route
             path='/registration'

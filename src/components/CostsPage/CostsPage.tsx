@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState, useMemo } from 'react'
 import { useStore } from 'effector-react'
-import { getCostsFX } from '../../api/costsClient'
+import { getCostsFx } from '../../api/costsClient'
 import { $costs, setCosts } from '../../context'
 import { getAuthDataFromLS } from '../../utils/auth'
 import { Spinner } from '../Spinner/Spinner'
@@ -16,7 +16,6 @@ export const CostsPage = () => {
     if (shouldLoadCosts.current) {
       shouldLoadCosts.current = false
       handleGetCosts()
-      console.log(store)
     }
   }, [])
 
@@ -24,7 +23,7 @@ export const CostsPage = () => {
     setSpinner(true)
     const authData = getAuthDataFromLS()
 
-    const costs = await getCostsFX({
+    const costs = await getCostsFx({
       url: '/cost',
       token: authData.access_token,
     })
@@ -32,6 +31,7 @@ export const CostsPage = () => {
     setSpinner(false)
     setCosts(costs)
   }
+
   return (
     <div className='container'>
       <h2 style={{ textAlign: 'center', marginBottom: 30 }}>Учет моих расходов</h2>

@@ -1,7 +1,13 @@
 import { ICost } from './../types/index'
-import { createCost, setCosts } from './../context/index'
+import { createCost, setCosts, updatedCost } from './../context/index'
 import { AxiosError } from 'axios'
-import { createCostFX, deleteCostFX, getCostsFX, refreshTokenFx } from '../api/costsClient'
+import {
+  createCostFx,
+  deleteCostFx,
+  getCostsFx,
+  refreshTokenFx,
+  updateCostFx,
+} from '../api/costsClient'
 import { IHandleAxiosErrorPayload } from '../types'
 import { getAuthDataFromLS, handleAlertMessage, removeUser } from './auth'
 
@@ -27,7 +33,7 @@ export const handleAxiosError = async (
       if (payload !== null) {
         switch (payloadData.type) {
           case 'get':
-            const costs = await getCostsFX({
+            const costs = await getCostsFx({
               url: '/cost',
               token: authData.access_token,
             })
@@ -36,7 +42,7 @@ export const handleAxiosError = async (
             break
 
           case 'create':
-            const cost = await createCostFX({
+            const cost = await createCostFx({
               url: '/cost',
               token: authData.access_token,
               cost: { ...payloadData.createCost?.cost } as ICost,
@@ -46,11 +52,26 @@ export const handleAxiosError = async (
               return
             }
 
-            createCost(costs)
+            createCost(cost)
+            handleAlertMessage({ alertText: 'Успешно создано', alertStatus: 'success' })
+            break
+          case 'update':
+            const editedCost = await updateCostFx({
+              url: '/cost',
+              token: authData.access_token,
+              cost: { ...payloadData.updateCost?.cost } as ICost,
+              id: payloadData.updateCost?.id as string,
+            })
+
+            if (!editedCost) {
+              return
+            }
+
+            updatedCost(editedCost)
             handleAlertMessage({ alertText: 'Успешно создано', alertStatus: 'success' })
             break
           case 'delete':
-            await deleteCostFX({
+            await deleteCostFx({
               url: '/cost',
               token: authData.access_token,
               id: payloadData.deleteCost?.id as string,

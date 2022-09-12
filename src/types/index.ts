@@ -27,6 +27,7 @@ export interface IBaseEffectArgs {
   url: string
   token: string
 }
+
 export interface ICreateCost extends IBaseEffectArgs {
   cost: ICost
 }
@@ -39,11 +40,17 @@ export interface IDeleteCost extends IBaseEffectArgs {
   id: string | number
 }
 
+export interface IUpdateCost extends IBaseEffectArgs {
+  cost: ICost
+  id: string | number
+}
+
 export interface IHandleAxiosErrorPayload {
   type: string
   createCost?: Partial<ICreateCost>
   getCosts?: Partial<IBaseEffectArgs>
   deleteCost?: Partial<IDeleteCost>
+  updateCost?: Partial<IUpdateCost>
 }
 
 export interface ICostsItemProps {
