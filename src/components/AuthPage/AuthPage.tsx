@@ -76,7 +76,7 @@ export const AuthPage = ({ type }: { type: 'login' | 'registration' }) => {
   }
   return (
     <div className='container'>
-      <h1>{currentAuthTitle}</h1>
+      <h1 className='title'>{currentAuthTitle}</h1>
       <form onSubmit={handleAuth} className='form-group'>
         <label className='auth-label'>
           Введите имя пользователя
