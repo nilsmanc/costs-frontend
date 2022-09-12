@@ -23,13 +23,25 @@ export interface ICost {
   _id?: number | string
 }
 
-export interface ICreateCost {
+export interface IBaseEffectArgs {
   url: string
-  cost: ICost
   token: string
 }
+export interface ICreateCost extends IBaseEffectArgs {
+  cost: ICost
+}
 
-export interface IGetCosts {
-  url: string
-  token: string
+export interface IRefreshToken extends IBaseEffectArgs {
+  username: string
+}
+
+export interface IHandleAxiosErrorPayload {
+  type: string
+  createCost?: Partial<ICreateCost>
+  getCosts?: Partial<IBaseEffectArgs>
+}
+
+export interface ICostsItemProps {
+  cost: ICost
+  index: number
 }
