@@ -1,5 +1,7 @@
 import { createDomain } from 'effector'
+
 import { IAlert } from '../types/index'
+
 const error = createDomain()
 
 export const setAlert = error.createEvent<IAlert>()

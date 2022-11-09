@@ -1,4 +1,5 @@
 import { ISpinnerProps } from '../../types'
+
 import './styles.css'
 
 export const Spinner = ({ top, left }: ISpinnerProps) => (

@@ -1,5 +1,7 @@
 import { MutableRefObject } from 'react'
+
 import { handleAlertMessage } from './auth'
+
 export const validationInputs = (
   textInput: MutableRefObject<HTMLInputElement>,
   priceInput: MutableRefObject<HTMLInputElement>,

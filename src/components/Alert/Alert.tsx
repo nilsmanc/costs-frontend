@@ -1,4 +1,5 @@
 import { IAlertProps } from '../../types'
+
 import './styles.css'
 
 export const Alert = ({ props }: IAlertProps) => (

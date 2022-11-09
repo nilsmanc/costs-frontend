@@ -1,6 +1,7 @@
+import { AxiosError } from 'axios'
+
 import { ICost } from './../types/index'
 import { createCost, setCosts, updatedCost } from './../context/index'
-import { AxiosError } from 'axios'
 import {
   createCostFx,
   deleteCostFx,
@@ -40,7 +41,6 @@ export const handleAxiosError = async (
 
             setCosts(costs)
             break
-
           case 'create':
             const cost = await createCostFx({
               url: '/cost',

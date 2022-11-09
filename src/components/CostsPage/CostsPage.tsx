@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState, useMemo } from 'react'
 import { useStore } from 'effector-react'
+
 import { getCostsFx } from '../../api/costsClient'
 import { $costs, setCosts } from '../../context'
 import { getAuthDataFromLS } from '../../utils/auth'
@@ -21,6 +22,7 @@ export const CostsPage = () => {
 
   const handleGetCosts = async () => {
     setSpinner(true)
+
     const authData = getAuthDataFromLS()
 
     const costs = await getCostsFx({
@@ -41,7 +43,6 @@ export const CostsPage = () => {
         ),
         [store],
       )}
-
       <div style={{ position: 'relative' }}>
         {spinner && <Spinner top={0} left={0} />}
         {useMemo(

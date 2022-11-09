@@ -1,5 +1,7 @@
-import { ICost } from './../types/index'
 import { createDomain } from 'effector'
+
+import { ICost } from './../types/index'
+
 const costs = createDomain()
 
 export const setCosts = costs.createEvent<ICost[]>()

@@ -1,7 +1,9 @@
 import { useStore } from 'effector-react'
+
 import { $auth, $username } from '../../context/auth'
 import { useTheme } from '../../hooks'
 import { removeUser } from '../../utils/auth'
+
 import './styles.css'
 
 export const Header = () => {

@@ -1,13 +1,15 @@
 import { useEffect, useState, useRef, MutableRefObject } from 'react'
 import { useStore } from 'effector-react'
+
 import { $totalPrice, createCost } from '../../../context'
 import { ICostsHeaderProps } from '../../../types'
 import { countTotalPrice } from '../../../utils/arrayUtils'
 import { Spinner } from '../../Spinner/Spinner'
-import './styles.css'
 import { validationInputs } from '../../../utils/validation'
 import { getAuthDataFromLS, handleAlertMessage } from '../../../utils/auth'
 import { createCostFx } from '../../../api/costsClient'
+
+import './styles.css'
 
 export const Header = ({ costs }: ICostsHeaderProps) => {
   const [spinner, setSpinner] = useState(false)

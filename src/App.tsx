@@ -1,6 +1,7 @@
-import { useStore } from 'effector-react'
 import { useEffect } from 'react'
+import { useStore } from 'effector-react'
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom'
+
 import { Alert } from './components/Alert/Alert'
 import { AuthPage } from './components/AuthPage/AuthPage'
 import { CostsPage } from './components/CostsPage/CostsPage'

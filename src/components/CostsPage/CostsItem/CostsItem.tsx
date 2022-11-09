@@ -1,4 +1,5 @@
 import { useState, useRef, MutableRefObject } from 'react'
+
 import { deleteCostFx, updateCostFx } from '../../../api/costsClient'
 import { removeCost, updatedCost } from '../../../context'
 import { ICostsItemProps } from '../../../types'
@@ -6,6 +7,7 @@ import { formatDate } from '../../../utils/arrayUtils'
 import { getAuthDataFromLS, handleAlertMessage } from '../../../utils/auth'
 import { validationInputs } from '../../../utils/validation'
 import { Spinner } from '../../Spinner/Spinner'
+
 import './styles.css'
 
 export const CostsItem = ({ cost, index }: ICostsItemProps) => {
@@ -123,7 +125,6 @@ export const CostsItem = ({ cost, index }: ICostsItemProps) => {
         ) : (
           <span style={{ marginRight: '10px' }}>Сумма {cost.price}</span>
         )}
-
         {edit ? (
           <div className='btn-block__inner'>
             <button className='btn btn-success btn-save' onClick={handleEditCost}>
@@ -138,7 +139,6 @@ export const CostsItem = ({ cost, index }: ICostsItemProps) => {
             Изменить
           </button>
         )}
-
         <button className='btn btn-danger btn-delete' onClick={deleteCost}>
           {deleteSpinner ? <Spinner top={5} left={7} /> : <span>&times;</span>}
         </button>
