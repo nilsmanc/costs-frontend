@@ -1,5 +1,13 @@
-## Technologies:
+### Test account
 
 Test account: test@test.com / 12345
 
-React, Typecript, Bootstrap, Effector.js, axios, react-router-dom v6
+### Technologies
+
+React, Typecript, Bootstrap, Effector.js, axios, React-Router-Dom
+
+![first](/public/readme/login.png)
+
+![second](/public/readme/cost.png)
+
+![third](/public/readme/light.png)
